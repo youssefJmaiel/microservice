@@ -1,0 +1,55 @@
+spring:
+ cloud:
+   gateway:
+     routes:
+       - id: swiggy-app
+         uri: lb://SWIGGY-APP
+         predicates:
+           - Path=/swiggy/**
+         filters:
+           - AuthenticationFilter
+
+
+       - id: employee-service
+         uri: lb://EMPLOYEE
+         predicates:
+           - Path=/employees/**
+         filters:
+           - AuthenticationFilter
+
+       - id: address-service
+         uri: lb://ADDRESS-SERVICE
+         predicates:
+           - Path=/demo-api/address/**
+         filters:
+           - AuthenticationFilter
+
+       - id: identity-service
+         uri: lb://IDENTITY-SERVICE
+         predicates:
+           - Path=/auth/**
+
+ application:
+   name: SWIGGY-GATEWAY
+
+eureka:
+  client:
+    service-url:
+      defaultZone : http://localhost:5000/eureka/
+
+  instance:
+    hostname: ${vcap.application.uris[0]:localhost}
+    preferIpAddress: true
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 20
+
+address-service:
+  ribbon:
+    eureka:
+      enabled: false
+    listOfServers: localhost:8082,localhost:9092,localhost:9999
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

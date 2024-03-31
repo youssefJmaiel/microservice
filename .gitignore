@@ -1,0 +1,3 @@
+# Project exclude paths
+/identity-service/target/
+/swiggy-gateway/target/

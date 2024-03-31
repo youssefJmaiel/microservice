@@ -1,0 +1,42 @@
+server:
+  port: 8082
+  servlet:
+    context-path: "/demo-api"
+
+spring:
+  application:
+    name: address-service
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/miscroservice
+    username: youssef
+    password: youssef
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+#eureka:
+#  instance:
+#    hostname: ADDRESS-SERVICE
+#    client:
+#      fetch-registry: true
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:5000/eureka/
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:5000/eureka/
+    fetch-registry: true
+

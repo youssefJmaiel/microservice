@@ -9,7 +9,7 @@ steps:
     mavenPomFile: 'adress-service/pom.xml'
     mavenOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
-    versionSpec: '11'
+    versionSpec: '17'
     jdkArchitectureOption: 'x64'
     jdkSourceOption: 'PreInstalled'
     publishJUnitResults: true

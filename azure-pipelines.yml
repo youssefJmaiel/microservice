@@ -9,10 +9,11 @@ steps:
     mavenPomFile: 'adress-service/pom.xml'
     mavenOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
+    versionSpec: '17'
+    jdkArchitectureOption: 'x64'
+    jdkSourceOption: 'PreInstalled'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    mavenVersionOption: 'Default'
-    mavenAuthenticateFeed: false
     goals: 'package'
 - task: Maven@4
   inputs:

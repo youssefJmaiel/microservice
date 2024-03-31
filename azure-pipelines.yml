@@ -7,14 +7,14 @@ steps:
 - task: Maven@4
   inputs:
     mavenPomFile: 'adress-service/pom.xml'
-    goals: 'compile'
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    versionSpec: '11'
+    jdkArchitectureOption: 'x64'
+    jdkSourceOption: 'PreInstalled'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    javaHomeOption: 'JDKVersion'
-    mavenVersionOption: 'Default'
-    mavenAuthenticateFeed: false
-    effectivePomSkip: false
-    sonarQubeRunAnalysis: false
+    goals: 'package'
 - task: Maven@4
   inputs:
     mavenPomFile: 'employee-service/pom.xml'
